@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//@RequestMapping("/jobs")
 @RestController
 public class jobController {
 
@@ -36,9 +36,9 @@ public class jobController {
     }
     @DeleteMapping("/jobs/{id}")
     public ResponseEntity<Job> deleteJobById(@PathVariable Long id){
-        Job job=jobService.deleteJobById(id);
-        if(job!=null){
-            return new ResponseEntity<>(job, HttpStatus.OK);
+        boolean job=jobService.deleteJobById(id);
+        if(job){
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
